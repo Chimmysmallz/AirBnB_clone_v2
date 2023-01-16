@@ -1,18 +1,17 @@
 #!/usr/bin/python3
+""" Script that starts a Flask web application """
 from flask import Flask
-"""
-intializing flask web app to listen on 0.0.0.0:5000
-"""
-application = Flask(__name__)
+
+app = Flask(__name__)
+app.url_map.strict_slashes = False
 
 
-@application.route('/', strict_slashes=False)
-def hello_world():
-    """
-    Display "Hello HBNB!"
-    """
-    return ('Hello HBNB!')
+@app.route('/')
+def hello_hbnb():
+    """print web"""
+    return 'Hello HBNB!'
 
 
-if __name__ == "__main__":
-    application.run()
+if __name__ == '__main__':
+    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000)
